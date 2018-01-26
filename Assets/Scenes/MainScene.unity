@@ -639,7 +639,7 @@ Camera:
   far clip plane: 459.2
   field of view: 60
   orthographic: 1
-  orthographic size: 7.8
+  orthographic size: 9.24
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -907,11 +907,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerNumber: 1
-  m_Speed: 22
+  Speed: 30
   m_MovementAudio: {fileID: 0}
   m_EngineIdling: {fileID: 0}
   m_EngineDriving: {fileID: 0}
   m_PitchRange: 0.2
+  boundary:
+    xMin: -8
+    xMax: 24
+    zMin: -18
+    zMax: 2
   projectile: {fileID: 1294423663886882, guid: 7ad04df1fc0821b4ca9e58e24a71d21d, type: 2}
   fireDelta: 0.5
 --- !u!54 &1740103470
@@ -989,7 +994,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1740103468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.05, z: -0.579}
+  m_LocalPosition: {x: 0, y: 9.05, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1027,11 +1032,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerNumber: 2
-  m_Speed: 22
+  Speed: 30
   m_MovementAudio: {fileID: 0}
   m_EngineIdling: {fileID: 0}
   m_EngineDriving: {fileID: 0}
   m_PitchRange: 0.2
+  boundary:
+    xMin: -8
+    xMax: 24
+    zMin: -18
+    zMax: 2
   projectile: {fileID: 1290641239684064, guid: 626dc09e0923bfd438912010381a7074, type: 2}
   fireDelta: 0.5
 --- !u!54 &1755799902

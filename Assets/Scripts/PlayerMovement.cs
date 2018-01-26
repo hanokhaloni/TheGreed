@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Boundary
+{
+    public float xMin, xMax, zMin, zMax;
+}
+
 public class PlayerMovement : MonoBehaviour {
 
+    
     public int m_PlayerNumber = 1;
-    public float m_Speed = 12f;
+    public float Speed = 12f;
 
     public AudioSource m_MovementAudio;
     public AudioClip m_EngineIdling;
     public AudioClip m_EngineDriving;
     public float m_PitchRange = 0.2f;
 
+    public Boundary boundary;
 
     private string m_MovementXAxisName;
     private string m_MovementYAxisName;
@@ -66,11 +74,6 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
-        // Store the player's input and make sure the audio for the engine is playing.
-        m_XMovementInputValue = Input.GetAxis(m_MovementXAxisName);
-        m_YMovementInputValue = Input.GetAxis(m_MovementYAxisName);
-        m_IsFire = Input.GetButton(m_Fire1Name);
-
         FireIfNeeded();
     }
 
@@ -102,20 +105,27 @@ public class PlayerMovement : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        // Move and turn the tank.
         Move();
     }
 
 
     private void Move()
     {
-        // Adjust the position of the tank based on the player's input.
-        Vector3 movement = new Vector3(m_XMovementInputValue, 0f, m_YMovementInputValue)
-             //movement input (we got from update method)
-            * m_Speed //scale
-            * Time.deltaTime;//way to guarentee that you move at the speed/pace of time
+        m_XMovementInputValue = Input.GetAxis(m_MovementXAxisName);
+        m_YMovementInputValue = Input.GetAxis(m_MovementYAxisName);
+        m_IsFire = Input.GetButton(m_Fire1Name);
 
-        m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
+        // Adjust the position of the tank based on the player's input.
+        Vector3 movement = new Vector3(
+            m_XMovementInputValue,
+            0f,
+            m_YMovementInputValue);
+        m_Rigidbody.velocity = movement * Speed;
+
+        m_Rigidbody.position = new Vector3(
+            Mathf.Clamp(m_Rigidbody.position.x, boundary.xMin, boundary.xMax),
+            0f,
+            Mathf.Clamp(m_Rigidbody.position.z, boundary.zMin, boundary.zMax));
     }
 
     private void FireIfNeeded()
