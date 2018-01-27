@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1294423663886882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 266.47, y: 54.5, z: 68.82}
+  m_LocalPosition: {x: 1.691, y: 8, z: 0.832}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4082168245843144}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeAmount: 3
   transmittingMesh: {fileID: 23226615059917928}
-  PlayerNumber: 0
+  PlayerNumber: 1
 --- !u!136 &136994174468711922
 CapsuleCollider:
   m_ObjectHideFlags: 1
